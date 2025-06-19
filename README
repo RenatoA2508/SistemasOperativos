@@ -1,0 +1,41 @@
+head.c - gestion de memoria en el heap
+	USO: ./heap <size1> <size2> <size3> - asigna tres bloques con los tamanios indicados
+	USO: ./heap <size1> <size2> <size3> p - adicionalmente, imprime al inicio la direccion de la pila
+
+
+memLayout - text, data, bss y stack
+        USO: ./memLayout
+        Imprime direcciones VIRTUALES de variables locales, globales y estaticas
+        inicializadas y no inicializadas
+        Las direcciones VIRTUALES son utilizadas en el programa virt2phys
+        size memLayout - layout de memoria (text, data, bss)
+
+virt2phys - direciones virtuales ==> direcciones fisicas (reales)
+        USO: sudo ./virt2phys <PID> <DIRECCION_VIRTUAL>
+
+
+*** arch32-64.c
+/ Diferencia en output en 32-bit and 64-bit gcc
+// gcc -m32 (-m64)
+
+
+*** mem-layout.c 
+// Experimentar con layout de MEM:
+// variables locales, globales y estaticas
+// inicializadas y no inicializadas
+
+size mem-layout
+   text	   data	    bss	    dec	    hex	filename
+   1415	    544	     16	   1975	    7b7	mem-layout
+
+memaddr.c -- direcciones de text, data, BSS, heap y stack
+  * Imprime localizaciones de dos funciones main() y afunc()
+  * Demuestra como la pila crece hacia abajo, afunc() imprime direccion de
+    la variable (auto) stack_var.
+  * Muestra la localizacion de la memoria asignada por alloca().
+  * Imprime dirs de vars en "data" y BSS y de memoria asignada por sbrk().
+  ***==>   Mientras memaddr corre: pmap <pid de memaddr> 
+  * Ref: http://www.phptr.com/articles/article.asp?p=173438&seqNum=2
+
+
+*** addrspace.c - otra version de memaddr.c
