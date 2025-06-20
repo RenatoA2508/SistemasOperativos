@@ -3,13 +3,13 @@
 #include <unistd.h>
 
 int main() {
-    printf("=== Heap Growth Visualization ===\n");
+    //printf("=== Heap Growth Visualization ===\n");
 
     void *initial_brk = sbrk(0);
     printf("Initial program break:    %p\n\n", initial_brk);
 
     const int ALLOCS = 5;
-    const int CHUNK_SIZE = 1048576;
+    const int CHUNK_SIZE = 130000;
 
     for (int i = 0; i < ALLOCS; i++) {
         void *before = sbrk(0);
