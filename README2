@@ -1,0 +1,54 @@
+
+concKybd.c - Dos procesos, padre e hijo leen concurrentemente del teclado. Experimentar, analizar
+
+dirFind.c - buscar un archivo en un directorio. Utiliza opendir, readdir, closedir
+
+dirLs-R.c - lista recursivamente directorios. Utiliza opendir, readdir, closedir 
+
+fileWriteBuffSync.c - Grabar archivo con O_SYNC y con buffer. Experimentar. Comparar con O_DIRECT
+
+fileWriteUnBuff.c - Grabar sin buffer (page cache). Usar iostat para monitorear (no) uso de cache.
+
+fileWriteFlexible.c - Grabar con O_SYNC, O_DIRECT o los dos flags a la vez.
+
+fileWritePerf.c - rendimiento con O_SYNC, O_DIRECT y los dos flags al mismo tiempo.
+
+cp_sendfile1.c  - copiar archivos con syscall senfile(). 
+
+cp_copy_file_range.c - copiar con syscall cp_copy_file_range(). Solo con bufs del kernel
+
+pipe.c - uso de pipe: padre envia a hijo un entero. Experimentar con pipes y mas datos.
+
+kybd-unbuf.c - desabilitar buffering y echo en terminal
+
+stats.c - acceso a metadatos de archivos
+
+mapfile.c - mapeo de archivo a buffer en memoria con mmap
+
+
+Creacion de IMAGENES de DISCOS con dd
+
+sudo dd if=/dev/sdX of=/path/to/image.img bs=4M status=progress
+if=: input file (your disk or partition, e.g., /dev/sda, /dev/sdb1)
+of=: output file (where you want to save the image)
+bs=4M: block size (4 MB blocks, helps performance)
+status=progress: shows progress of the operation
+
+Warning:
+Be very careful with dd, as using the wrong if= or of= can overwrite important data.
+
+Example: Create an image of a USB stick
+sudo dd if=/dev/sdb of=~/usb_backup.img bs=4M status=progress
+
+Example: Restore the image back to a disk
+sudo dd if=~/usb_backup.img of=/dev/sdb bs=4M status=progress
+
+Optional: Compress the image. To save space, you can compress it on-the-fly:
+sudo dd if=/dev/sdb bs=4M | gzip > ~/usb_backup.img.gz
+
+And to restore it:
+gunzip -c ~/usb_backup.img.gz | sudo dd of=/dev/sdb bs=4M
+
+Find the correct device
+Before running dd, check the device name using:
+lsblk o sudo fdisk -l

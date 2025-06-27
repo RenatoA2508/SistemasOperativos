@@ -1,0 +1,28 @@
+
+CC = gcc
+CFLAGS = -Wall -Wextra -O2
+
+SRC = concKybd.c \
+      dirFind.c \
+      dirLs-R.c \
+      fileWriteBuffSync.c \
+      fileWriteUnBuff.c \
+      fileWriteFlexible.c \
+      fileWritePerf.c \
+      cp_sendfile1.c \
+      cp_copy_file_range.c \
+      pipe1.c \
+      kybd-unbuf.c \
+      stats.c \
+      mapfile.c
+
+BIN = $(SRC:.c=)
+
+all: $(BIN)
+
+%: %.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+clean:
+	rm -f $(BIN)
+
