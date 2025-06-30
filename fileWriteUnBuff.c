@@ -19,7 +19,6 @@
 int main() {
     const char *filename = "direct_output.bin";
     int fd;
-
     // Open file with O_DIRECT (no kernel buffering)
     fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC | O_DIRECT, 0644);
     if (fd < 0) {

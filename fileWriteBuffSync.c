@@ -21,7 +21,7 @@ int main() {
     int fd;
 
     // Open the file with O_SYNC to force synchronous writes
-    fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC | O_SYNC, 0644);
+    fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC | O_SYNC, 0644); 
     if (fd < 0) {
         perror("open");
         return 1;
@@ -52,5 +52,3 @@ int main() {
     free(buf);
     close(fd);
     return 0;
-}
-
