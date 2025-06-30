@@ -1,5 +1,5 @@
-// Buscar archivo en directorio
-// USO: dirAPI <dir_name> <file_name>
+// Look up for a file in a directory
+// USE: dirAPI <dir_name> <file_name>
 // struct dirent {
 //   ino_t          d_ino;       /* Inode number */
 //   off_t          d_off;       /* Not an offset; see below */
