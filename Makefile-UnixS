@@ -1,0 +1,13 @@
+SVRSRC= unsvr.c uncltsvr.h
+CLTSRC= unclt.c uncltsvr.h
+
+all:	unclt unsvr
+
+unclt:	$(CLTSRC)
+	cc -o unclt unclt.c
+
+unsvr:	$(SVRSRC)
+	cc -o unsvr unsvr.c 
+
+clean:
+	rm unclt.o unsvr.o

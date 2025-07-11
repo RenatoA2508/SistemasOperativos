@@ -1,0 +1,15 @@
+
+CC = gcc
+CFLAGS = -Wall -Wextra -O2
+
+SRC = opciones.c socketpairPipeSEQPACKET.c socketpairFullDuplexPipes.c socketpairPipeSTREAM.c
+
+BIN = $(SRC:.c=)
+
+all: $(BIN) 
+
+%: %.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+clean:
+	rm -f $(BIN)

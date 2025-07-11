@@ -1,0 +1,50 @@
+
+CC = gcc
+CFLAGS = -Wall -Wextra -O2
+
+SRC = alarm.c \
+      fifoW.c \
+      msgQ.c \
+      raise.c \
+      shm.c \
+      sigint.c \
+      fifoR.c \
+      kill.c \
+      pipePaHi.c \
+      semget.c \
+      shmget.c 
+
+
+BIN = $(SRC:.c=)
+
+all: $(BIN) mq_sender mq_receiver shmPosixW shmPosixR shmPosixClean shmSemPosixW shmSemPosixR shmSemPosixClean
+
+%: %.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+mq_sender:	mq_sender.c 
+	cc -o mq_sender mq_sender.c -lrt
+
+mq_receiver:	mq_receiver.c
+	cc -o mq_receiver mq_receiver.c -pthread
+
+shmPosixW:	shmPosixW.c
+	cc -o shmPosixW shmPosixW.c -lrt
+
+shmPosixR:	shmPosixR.c
+	cc -o shmPosixR shmPosixR.c -lrt
+
+shmPosixClean:	shmPosixClean.c
+	cc -o shmPosixClean shmPosixClean.c -lrt
+
+shmSemPosixW:	shmSemPosixW.c
+	cc -o shmSemPosixW shmSemPosixW.c -lrt -pthread
+
+shmSemPosixR:	shmSemPosixR.c
+	cc -o shmSemPosixR shmSemPosixR.c -lrt -pthread
+
+shmSemPosixClean:	shmSemPosixClean.c
+	cc -o shmSemPosixClean shmSemPosixClean.c -lrt -pthread
+
+clean:
+	rm -f $(BIN) mq_sender mq_receiver shmSemPosixW shmSemPosixR shmSemPosixClean shmPosixW shmPosixR shmPosixClean

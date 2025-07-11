@@ -1,0 +1,32 @@
+IPC PROGRAMS 
+
+Signals
+-------
+alarm.c - signal SIGALRM; argv[1]: numero de segundos de ALARM
+raise.c - enviar signal (KILL) al mismo proceso
+sigint.c - Intercepta signal (INT: Ctl-C) y no finaliza.
+kill.c - implementacion del cmd "kill" del bash. Uso: ./kill <pid> <signal>
+
+System V IPC
+------------
+msgQ.c - colas de msg (Sys V). 
+shmget.c - obtener un segmento de memoria copartida
+shm.c - memoria compartida de Sys V. Padre e hijo comparten memoria
+semget.c - semaforos Sys V. Ordena ejecucion de procesos padre e hijo
+
+POSIX IPC
+pipePaHi.c - pipe sin nombre entre procesos padre e hijo
+fifoW.c - pipe con nombre; proceso escribidor
+fifoR.c - pipe con nombre; proceso lector
+mq_sender.c - colas de msgs (POSIX). Procesos envian y reciben de cola: msgid 
+mq_receiver.c - colas de msgs (POSIX) 
+shmPosixW.c - crea y escribe un msg en memoria compartida
+shmPosixR.c - abre shm existente y lee el mensaje
+shmPosixClean.c - elimina la memoria compartida
+
+POSIX shared memory con semaforo POSIX in‑memory y una estructura mapeada
+shmSemPosixW.c - ejecutar primero. Crea/abre shm y escribe un msg
+shmSemPosixR.c - abre shm y lee el msg.
+shmSemPosixClean.c - ejecutar al final 
+
+

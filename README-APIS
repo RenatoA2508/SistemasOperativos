@@ -1,0 +1,11 @@
+Programas con la API sockets
+============================
+
+opciones.c - Imprime opciones de socket con getsockopt() 
+
+socketpairFullDuplexPipes.c - Crear par de sockets conectados, fork y comunicarse 
+	como PIPES pero full-duplex => send msgs en las dos direcciones
+
+socketpairPipeSEQPACKET.c -  PIPES con socketpair. Utiliza SOCK_SEQPACKET
+
+socketpairPipeSTREAM.c - PIPES con socketpair. Utiliza SOCK_STREAM

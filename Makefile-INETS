@@ -1,0 +1,10 @@
+all: 
+	gcc cltEchoTCP-V6.c -o cltEchoTCP-V6
+	gcc svrEchoTCP-V6.c -o svrEchoTCP-V6
+	gcc cltEchoTCP-V4.c -o cltEchoTCP-V4
+	gcc svrEchoTCP-V4.c -o svrEchoTCP-V4
+	gcc svrEchoTCPconc-V4.c -o svrEchoTCPconc-V4
+
+clean:
+	rm cltEchoTCP-V4 svrEchoTCP-V6 cltEchoTCP-V6 svrEchoTCP-V4 svrEchoTCPconc-V4
+

@@ -1,0 +1,19 @@
+APLICACION CLIENTE SERVIDOR CON SOCKETS UNIX
+
+Esta aplicacion implementa el servicio echo:
+
+El cliente envia un msg al servidor, este lo lee, espera 10 segs y 
+devuelve el msg al cliente
+
+El servidor unsvr es secuencial, orientado a conexion.
+
+El medio de comunicacion es un "archivo". El nombre del archivo es el 
+primer argumento de los programas cliente y servidor
+
+unclt.c - programa cliente
+USO: unclt <nombre de archivo> <msg>
+
+unsvr.c - programa servidor secuencial
+USO: unsvr <nombre de archivo>
+
+uncltsvr.h - archivo include para cliente y servidor
