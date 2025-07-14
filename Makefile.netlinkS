@@ -1,0 +1,17 @@
+KDIR := /lib/modules/$(shell uname -r)/build
+PWD  := $(shell pwd)
+
+obj-m += netlink_kernel.o
+
+all: netlink_user netlink_kernel.ko
+
+netlink_user: netlink_user.c
+	$(CC) netlink_user.c -o netlink_user
+
+netlink_kernel.ko:
+	make -C $(KDIR) M=$(PWD) modules
+
+clean:
+	make -C $(KDIR) M=$(PWD) clean
+	$(RM) netlink_user
+
